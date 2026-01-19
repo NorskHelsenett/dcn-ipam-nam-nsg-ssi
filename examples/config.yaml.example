@@ -1,0 +1,29 @@
+---
+# Configuration for IPAM-NAM-NSG-SSI
+# Syncs IP address management data from IPAM to NAM
+#
+# Usage:
+# 1. Copy this file: cp examples/config.yaml.example config/config.yaml
+# 2. Update values to match your environment
+# 3. Safe to commit (contains no sensitive data)
+#
+# For Docker: File must be readable by UID 1993 (deno user)
+# chmod 644 config/config.yaml && sudo chown 1993:1993 config/config.yaml
+
+# Environment and SSI settings
+DENO_ENV: "production"                     # Runtime environment: development, production
+SSI_NAME: "IPAM-NAM-NSG-SSI "              # Service name
+SSI_INTERVAL: "300"                        # Sync interval in seconds
+REQUEST_TIMEOUT: "10000"                   # API request timeout in milliseconds
+
+# NAM settings
+NAM_URL: "https://nam.example.com/api"     # NAM API endpoint
+
+# IPAM settings
+IPAM_URL: "https://ipam.example.com/api"   # Netbox API endpoint
+
+# Splunk logging settings
+SPLUNK_URL: "https://splunk.example.com"   # Splunk HEC endpoint
+SPLUNK_INDEX: "network_automation"         # Target Splunk index
+SPLUNK_SOURCE: "ipam-nam-nsg-ssi:qa"       # Log source identifier with environment
+SPLUNK_SOURCE_TYPE: "ipam-nam-nsg-ssi"     # Source type with priority

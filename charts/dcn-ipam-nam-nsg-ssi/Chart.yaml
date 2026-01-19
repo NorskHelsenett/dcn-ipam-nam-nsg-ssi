@@ -1,0 +1,6 @@
+apiVersion: v2
+name: dcn-ipam-nam-nsg-ssi
+description: Network automation sync for IPAM to NAM
+type: application
+version: 0.0.2
+appVersion: "0.0.2"

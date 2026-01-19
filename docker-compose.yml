@@ -1,0 +1,12 @@
+services:
+  ipam-nam-nsg-ssi:
+    build: .
+    container_name: ipam-nam-nsg-ssi
+    image: ipam-nam-nsg-ssi
+    user: "1993:1993"
+    environment:
+      - SECRETS_PATH=/app/secrets/secrets.yaml
+      - CONFIG_PATH=/app/config/config.yaml
+    volumes:
+      - ./config/config.yaml:/app/config/config.yaml:ro
+      - ./secrets/secrets.yaml:/app/secrets/secrets.yaml:ro

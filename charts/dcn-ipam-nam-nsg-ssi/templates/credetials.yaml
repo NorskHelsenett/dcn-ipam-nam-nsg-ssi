@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ipam-nam-nsg-ssi-{{ .Values.settings.infrastructure }}-secrets
+  namespace: ssi
+type: Opaque
+stringData:
+  secrets.yaml: |
+    ---
+    NAM_TOKEN: {{ .Values.credentials.namToken | quote }}
+    SPLUNK_TOKEN: {{ .Values.credentials.splunkToken | quote }}
+    IPAM_TOKEN: {{ .Values.credentials.ipamToken | quote }}
