@@ -22,7 +22,7 @@ integration:
   splunk:
     url: "https://splunk-hec.nhn.no"
     index: "dc_nam"
-    source: "ipam-nam-nsg-ssi:prod"
+    source: "ipam-nam-nsg-ssi:qa"
 
 credentials:
   namToken: "{{ .Values.credentials.namToken }}"
