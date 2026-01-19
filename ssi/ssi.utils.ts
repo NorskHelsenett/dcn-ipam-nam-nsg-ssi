@@ -58,6 +58,14 @@ export const processConsumerGroups = async (
               prefix.status.value !== "container",
           );
 
+          logger.debug(
+            `ipam-nam-nsg-ssi: Retrieved ${netboxPrefixes.length} prefixes for domain ${domain} from IPAM ${ipam.getHostname()}`,
+            {
+              component: "worker",
+              method: "work",
+            },
+          );
+
           // Check if NSX Security Group exists in NAM for the domain
           const securityGroup = namSecurityGroups.results.find(
             (sg) => sg.name === `nsg-consumer-${domain}`,
@@ -124,6 +132,14 @@ export const processConsumerGroups = async (
           } else {
             // If it exists, update if needed
             const namPrefixes = securityGroup.ipAddresses;
+
+            logger.debug(
+              `ipam-nam-nsg-ssi: Retrieved ${namPrefixes.length} prefixes for NSX Security Group '${securityGroup.name}' from NAM ${nam.getHostname()}`,
+              {
+                component: "worker",
+                method: "work",
+              },
+            );
 
             const addedPrefixes = netboxPrefixes
               .filter((netboxPrefix: NetboxPrefix) => {
